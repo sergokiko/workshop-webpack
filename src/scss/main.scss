@@ -1,7 +1,33 @@
 $black: #000000;
 $white: #ffffff;
 
-body {
-  background-color: $black;
-  color: $white;
+html, body {
+  margin: 0;
+}
+
+.slider {
+}
+
+.slider-wrapper {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  height: 60vh;
+}
+
+.slider-item {
+  width: 100vw;
+  height: 30vh;
+  position: absolute;
+
+}
+
+.slider-img {
+  width: 40vw;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.slider-img--large {
+  width: 45vw;
 }
