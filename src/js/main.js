@@ -1,6 +1,8 @@
 import '../scss/main.scss'
 import gsap from 'gsap';
 
+let now = Date.now();
+
 const slider = document.querySelector('.slider-wrapper');
 const slides = [...slider.querySelectorAll(`.slider-item`)];
 
@@ -107,12 +109,24 @@ const goToPrevSlide = () => {
 
 setInitialSliderItemsPositions(200);
 
+function throttle(cb, interval) {
+    return function () {
+        if ( now + interval - Date.now() < 0) {
+            cb();
+            now = Date.now();
+        }
+    };
+}
+
+const throttleGoNextSlide = throttle( goToNextSlide, 700);
+const throttleGoPrevSlide = throttle( goToPrevSlide, 700);
+
 document.querySelector('.slider-next').addEventListener('click', () => {
-    goToNextSlide();
+    throttleGoNextSlide();
 });
 
 document.querySelector('.slider-prev').addEventListener('click', () => {
-    goToPrevSlide();
+    throttleGoPrevSlide();
 });
 
 
